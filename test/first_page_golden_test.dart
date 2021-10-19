@@ -12,11 +12,18 @@ import 'package:golden_string_over_demo/main.dart';
 
 void main() {
   testGoldens('firstPage', (WidgetTester tester) async {
-    //デバイスの画面サイズ
-    final size = Size(415, 896);
-    //第一引数はどのWidgetをビルドするのか指定、どのサイズにビルドするかがsurfaceSize
-    await tester.pumpWidgetBuilder(FirstPage(), surfaceSize: size);
-    //正規のスクリーンショットと同じかテストする
+    final builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: [
+        Device.phone,
+        Device.iphone11,
+        Device.tabletPortrait,
+        Device.tabletLandscape,
+      ])
+      ..addScenario(
+        widget: FirstPage(),
+        name: 'default page',
+      );
+    await tester.pumpDeviceBuilder(builder);
     await screenMatchesGolden(tester, 'firstPage');
   });
 }

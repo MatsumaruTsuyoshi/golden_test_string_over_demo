@@ -11,12 +11,12 @@ import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:golden_string_over_demo/main.dart';
 
 void main() {
-  testGoldens('secondPage', (WidgetTester tester) async {
-    //デバイスの画面サイズ
-    final size = Size(415, 896);
-    //第一引数はどのWidgetをビルドするのか指定、どのサイズにビルドするかがsurfaceSize
-    await tester.pumpWidgetBuilder(SecondPage(), surfaceSize: size);
-    //正規のスクリーンショットと同じかテストする
-    await screenMatchesGolden(tester, 'secondPage');
-  });
+  // testGoldens('secondPage', (WidgetTester tester) async {
+  //   //デバイスの画面サイズ
+  //   final size = Size(415, 896);
+  //   //第一引数はどのWidgetをビルドするのか指定、どのサイズにビルドするかがsurfaceSize
+  //   await tester.pumpWidgetBuilder(SecondPage(), surfaceSize: size);
+  //   //正規のスクリーンショットと同じかテストする
+  //   await screenMatchesGolden(tester, 'secondPage');
+  // });
 }

@@ -57,7 +57,7 @@ class SecondPage extends StatelessWidget {
           children: [
             Text(
               'カレー食べたい1カレー食べたい2カレー食べたい3カレー食べたい4カレー食べたい5カレー食べたい6カレー食べたい7カレー食べたい8カレー食べたい9カレー食べたい10',
-              maxLines: 1,
+              // maxLines: 1,
             ),
           ],
         ),
