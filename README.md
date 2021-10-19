@@ -1,16 +1,55 @@
-# golden_string_over_demo
 
-A new Flutter application.
+# 複数の解像度を同時にテスト出来るか
+以下コードで解像度違いのテストができました
+```dart
+void main() {
+  testGoldens('pc', (WidgetTester tester) async {
+    //デバイスの画面サイズ
+    final size = Size(1100, 600);
+    //第一引数はどのWidgetをビルドするのか指定、どのサイズにビルドするかがsurfaceSize
+    await tester.pumpWidgetBuilder(MyApp(), surfaceSize: size);
+    //正規のスクリーンショットと同じかテストする
+    await screenMatchesGolden(tester, 'pc');
+  });
+  
+  testGoldens('smartPhone', (WidgetTester tester) async {
+    //デバイスの画面サイズ
+    final size = Size(415, 896);
+    //第一引数はどのWidgetをビルドするのか指定、どのサイズにビルドするかがsurfaceSize
+    await tester.pumpWidgetBuilder(MyApp(), surfaceSize: size);
+    //正規のスクリーンショットと同じかテストする
+    await screenMatchesGolden(tester, 'smartPhone');
+  });
+}
+```
 
-## Getting Started
+# ページ事で同時にテスト出来るか
+できました
 
-This project is a starting point for a Flutter application.
+first_page_golden_test.dart
+```dart
+void main() {
+  testGoldens('firstPage', (WidgetTester tester) async {
+    //デバイスの画面サイズ
+    final size = Size(415, 896);
+    //第一引数はどのWidgetをビルドするのか指定、どのサイズにビルドするかがsurfaceSize
+    await tester.pumpWidgetBuilder(FirstPage(), surfaceSize: size);
+    //正規のスクリーンショットと同じかテストする
+    await screenMatchesGolden(tester, 'firstPage');
+  });
+}
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+second_page_golden_test.dart
+```dart
+void main() {
+  testGoldens('secondPage', (WidgetTester tester) async {
+    //デバイスの画面サイズ
+    final size = Size(415, 896);
+    //第一引数はどのWidgetをビルドするのか指定、どのサイズにビルドするかがsurfaceSize
+    await tester.pumpWidgetBuilder(SecondPage(), surfaceSize: size);
+    //正規のスクリーンショットと同じかテストする
+    await screenMatchesGolden(tester, 'secondPage');
+  });
+}
+```
